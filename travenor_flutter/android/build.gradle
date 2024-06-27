@@ -1,0 +1,31 @@
+buildscript {
+    ext.kotlin_version = '1.8.0' // Actualiza a la versión 1.8.0
+    repositories {
+        google()
+        mavenCentral() // Reemplaza jcenter() ya que está siendo retirado
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.0.4' // Asegúrate de tener una versión reciente de Gradle
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral() // Reemplaza jcenter() ya que está siendo retirado
+    }
+}
+
+rootProject.buildDir = '../build'
+subprojects {
+    project.buildDir = "${rootProject.buildDir}/${project.name}"
+}
+subprojects {
+    project.evaluationDependsOn(':app')
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
