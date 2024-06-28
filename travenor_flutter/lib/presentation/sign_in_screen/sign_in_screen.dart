@@ -77,7 +77,25 @@ class SignInScreen extends GetWidget<SignInController> {
                                     }
                                     return null;
                                   }),
-                              Align(
+                              CustomTextFormField(
+                                  keyboardType: TextInputType.visiblePassword,
+                                  width: 335,
+                                  focusNode: FocusNode(),
+                                  controller: controller.passwordcontroller,
+                                  hintText: "Contraseña".tr,
+                                  margin:
+                                      getMargin(left: 20, top: 10, right: 20),
+                                  textInputAction: TextInputAction.done,
+                                  alignment: Alignment.center,
+                                  validator: (value) {
+                                    /*      if (value == null ||
+                                        (!isValidEmail(value,
+                                            isRequired: true))) {
+                                      return "Please enter valid email";
+                                    }
+                                    return null; */
+                                  }),
+                              /* Align(
                                   alignment: Alignment.center,
                                   child: Container(
                                       height: getVerticalSize(56.00),
@@ -143,7 +161,7 @@ class SignInScreen extends GetWidget<SignInController> {
                                                                   width: getSize(
                                                                       24.00)))
                                                         ])))
-                                          ]))),
+                                          ]))), */
                               Align(
                                   alignment: Alignment.centerRight,
                                   child: InkWell(
@@ -163,7 +181,9 @@ class SignInScreen extends GetWidget<SignInController> {
                                   )),
                               CustomButton(
                                   onTap: () {
-                                    Get.toNamed(AppRoutes.verificationScreen);
+                                    controller.authUser(
+                                        controller.emailController.text,
+                                        controller.passwordcontroller.text);
                                   },
                                   width: 335,
                                   text: "lbl_sign_in".tr,

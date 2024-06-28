@@ -61,8 +61,7 @@ class SignUpScreen extends GetWidget<SignUpController> {
                               CustomTextFormField(
                                   width: 335,
                                   focusNode: FocusNode(),
-                                  controller:
-                                      controller.groupFiftyOneController,
+                                  controller: controller.nombrecontroller,
                                   hintText: "lbl_leonardo_smith".tr,
                                   margin:
                                       getMargin(left: 20, top: 40, right: 20),
@@ -84,7 +83,25 @@ class SignUpScreen extends GetWidget<SignUpController> {
                                     }
                                     return null;
                                   }),
-                              Align(
+                              CustomTextFormField(
+                                  keyboardType: TextInputType.visiblePassword,
+                                  width: 335,
+                                  focusNode: FocusNode(),
+                                  controller: controller.passwordcontroller,
+                                  hintText: "Contraseña".tr,
+                                  margin:
+                                      getMargin(left: 20, top: 10, right: 20),
+                                  textInputAction: TextInputAction.done,
+                                  alignment: Alignment.center,
+                                  validator: (value) {
+                                    /*      if (value == null ||
+                                        (!isValidEmail(value,
+                                            isRequired: true))) {
+                                      return "Please enter valid email";
+                                    }
+                                    return null; */
+                                  }),
+                              /* Align(
                                   alignment: Alignment.center,
                                   child: Container(
                                       height: getVerticalSize(56.00),
@@ -150,7 +167,7 @@ class SignUpScreen extends GetWidget<SignUpController> {
                                                                   width: getSize(
                                                                       24.00)))
                                                         ])))
-                                          ]))),
+                                          ]))), */
                               Padding(
                                   padding:
                                       getPadding(left: 20, top: 16, right: 20),
@@ -161,6 +178,9 @@ class SignUpScreen extends GetWidget<SignUpController> {
                                           .txtSFUIDisplayRegular14Bluegray400
                                           .copyWith(height: 1.00))),
                               CustomButton(
+                                  onTap: () => controller.signUpUser(
+                                      controller.emailController.text,
+                                      controller.passwordcontroller.text),
                                   width: 335,
                                   text: "lbl_sign_up2".tr,
                                   margin:

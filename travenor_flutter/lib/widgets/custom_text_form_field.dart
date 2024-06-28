@@ -11,6 +11,7 @@ class CustomTextFormField extends StatelessWidget {
       this.width,
       this.margin,
       this.controller,
+      this.keyboardType,
       this.focusNode,
       this.isObscureText = false,
       this.textInputAction = TextInputAction.next,
@@ -27,6 +28,8 @@ class CustomTextFormField extends StatelessWidget {
   TextFormFieldPadding? padding;
 
   TextFormFieldVariant? variant;
+
+  TextInputType? keyboardType;
 
   TextFormFieldFontStyle? fontStyle;
 
@@ -78,6 +81,7 @@ class CustomTextFormField extends StatelessWidget {
         style: _setFontStyle(),
         obscureText: isObscureText!,
         textInputAction: textInputAction,
+        keyboardType: keyboardType,
         maxLines: maxLines ?? 1,
         decoration: _buildDecoration(),
         validator: validator,
