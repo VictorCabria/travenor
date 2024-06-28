@@ -271,14 +271,13 @@ class HomeScreen extends GetWidget<HomeController> {
                   ),
                 ),
                 Align(
-                  alignment: Alignment.centerLeft,
                   child: Container(
                     height: getVerticalSize(
                       98.00,
                     ),
                     width: size.width,
                     margin: getMargin(
-                      top: 30,
+                      top: 35,
                     ),
                     child: Stack(
                       alignment: Alignment.topLeft,

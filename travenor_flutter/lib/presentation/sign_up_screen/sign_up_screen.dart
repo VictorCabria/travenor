@@ -72,7 +72,7 @@ class SignUpScreen extends GetWidget<SignUpController> {
                                   controller: controller.emailController,
                                   hintText: "msg_www_uihut_gmail".tr,
                                   margin:
-                                      getMargin(left: 20, top: 24, right: 20),
+                                      getMargin(left: 20, top: 10, right: 20),
                                   textInputAction: TextInputAction.done,
                                   alignment: Alignment.center,
                                   validator: (value) {
@@ -204,16 +204,19 @@ class SignUpScreen extends GetWidget<SignUpController> {
                                                 style: AppStyle
                                                     .txtSFUIDisplayRegular14
                                                     .copyWith(height: 1.00)),
-                                            Padding(
-                                                padding: getPadding(left: 8),
-                                                child: Text("lbl_sign_in2".tr,
-                                                    overflow:
-                                                        TextOverflow.ellipsis,
-                                                    textAlign: TextAlign.left,
-                                                    style: AppStyle
-                                                        .txtSFUIDisplayMedium14
-                                                        .copyWith(
-                                                            height: 1.00)))
+                                            GestureDetector(
+                                              onTap: () => controller.signIp(),
+                                              child: Padding(
+                                                  padding: getPadding(left: 8),
+                                                  child: Text("lbl_sign_in2".tr,
+                                                      overflow:
+                                                          TextOverflow.ellipsis,
+                                                      textAlign: TextAlign.left,
+                                                      style: AppStyle
+                                                          .txtSFUIDisplayMedium14
+                                                          .copyWith(
+                                                              height: 1.00))),
+                                            )
                                           ]))),
                               Align(
                                   alignment: Alignment.center,

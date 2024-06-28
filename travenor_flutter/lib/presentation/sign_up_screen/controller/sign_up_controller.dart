@@ -24,12 +24,16 @@ class SignUpController extends GetxController {
     nombrecontroller.dispose();
   }
 
+  void signIp() {
+    Get.offNamed(AppRoutes.signInScreen);
+  }
+
   Future<String?> signUpUser(String email, String pass) async {
     try {
       var response = await auth.signUp(email: email, password: pass);
       if (response != null) {
         auth.postDetailsToFirestore(nombrecontroller.text);
-
+        Get.offNamed(AppRoutes.signInScreen);
       }
     } catch (e) {}
     return null;
