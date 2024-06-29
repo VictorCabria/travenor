@@ -77,6 +77,8 @@ class ForgotPasswordScreen extends GetWidget<ForgotPasswordController> {
                                     return null;
                                   }),
                               CustomButton(
+                                  onTap: () => controller.resetpassword(
+                                      controller.emailController.text),
                                   width: 335,
                                   text: "lbl_reset_password".tr,
                                   margin: getMargin(

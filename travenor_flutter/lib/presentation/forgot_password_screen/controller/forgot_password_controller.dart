@@ -1,3 +1,4 @@
+import '../../../services/auth_service.dart';
 import '/core/app_export.dart';
 import 'package:travelappflutter/presentation/forgot_password_screen/models/forgot_password_model.dart';
 import 'package:flutter/material.dart';
@@ -16,5 +17,15 @@ class ForgotPasswordController extends GetxController {
   void onClose() {
     super.onClose();
     emailController.dispose();
+  }
+
+  Future<String?> resetpassword(String email) async {
+    try {
+      var response = auth.sendPasswordReset(emailController.text);
+      if (response != "") {
+        Get.offNamed(AppRoutes.signInScreen);
+      }
+    } catch (e) {}
+    return null;
   }
 }
