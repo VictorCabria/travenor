@@ -31,11 +31,28 @@ class SignUpController extends GetxController {
   Future<String?> signUpUser(String email, String pass) async {
     try {
       var response = await auth.signUp(email: email, password: pass);
+
       if (response != null) {
         auth.postDetailsToFirestore(nombrecontroller.text);
-        Get.offNamed(AppRoutes.signInScreen);
+
+        Get.dialog(
+          AlertDialog(
+            title: Text('Registro confirmado'),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Get.back();
+                  Get.offNamed(AppRoutes.signInScreen);
+                },
+                child: Text('Aceptar'),
+              ),
+            ],
+          ),
+        );
       }
-    } catch (e) {}
+    } catch (e) {
+      // Manejar error si es necesario
+    }
     return null;
   }
 }

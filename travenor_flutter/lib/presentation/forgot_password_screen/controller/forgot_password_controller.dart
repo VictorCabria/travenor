@@ -23,7 +23,21 @@ class ForgotPasswordController extends GetxController {
     try {
       var response = auth.sendPasswordReset(emailController.text);
       if (response != "") {
-        Get.offNamed(AppRoutes.signInScreen);
+        Get.dialog(
+          AlertDialog(
+            title: Text('Envio a su correo'),
+            content: Text("Se envio un link a su correo "),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Get.back();
+                  Get.offNamed(AppRoutes.signInScreen);
+                },
+                child: Text('Aceptar'),
+              ),
+            ],
+          ),
+        );
       }
     } catch (e) {}
     return null;
